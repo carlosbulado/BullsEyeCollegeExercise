@@ -35,10 +35,10 @@ class BullsEyeTests: XCTestCase {
     XCTAssertEqual(0, game.scoreTotal)
   }
   /*
-   round = round + 1
-   scoreRound = 0
-   targetValue = 1 + (Int(arc4random()) % 100)
- */
+     round = round + 1
+     scoreRound = 0
+     targetValue = 1 + (Int(arc4random()) % 100)
+   */
   func testStartNewRound()
   {
     game.startNewGame()
@@ -47,6 +47,19 @@ class BullsEyeTests: XCTestCase {
     XCTAssertEqual(roundNumber + 1, game.round)
     XCTAssertEqual(0, game.scoreRound)
     XCTAssertTrue(1 <= game.targetValue && 100 >= game.targetValue)
+    
+    for _ in 0...10
+    {
+      XCTAssertTrue(isRandomNumber())
+    }
+    
+  }
+
+  func isRandomNumber() -> Bool
+  {
+    let randNumber = game.targetValue
+    game.startNewRound()
+    return randNumber != game.targetValue
   }
   
   
